@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <!-- Font Awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="sticky-header">
+        <div class="header-content">
+            <!-- <a href="/fund-account">Fund Account</a> -->
+            <a href="/how-to-use">How to Use</a>
+            <a href="/settings">Settings</a>
+            <a href="/faq">F&Q</a>
+            <a href="/logout" class="logout-link">Log Out</a>
+        </div>
+    </header>
+
+    <!-- Fund Account Section -->
+    <h2>Fund Your Account</h2>
+    <form id="paymentForm" onsubmit="event.preventDefault(); payWithPaystack();">
+        <label for="email">Email</label>
+        <input type="email" id="email-address" required placeholder="Enter your email" />
+
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" required placeholder="Enter amount" />
+
+        <input type="hidden" id="user-id" value="<%= user._id %>" />
+
+        <button type="button" onclick="payWithPaystack()">Pay</button>
+    </form>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script>
+        function payWithPaystack() {
+            let email = document.getElementById("email-address").value;
+            let amount = document.getElementById("amount").value * 100; // Convert to kobo (for Naira)
+            let userId = document.getElementById("user-id").value;
+
+            let handler = PaystackPop.setup({
+                key: 'pk_live_c1205d0dd34d02a74172a6834b7c2137a544c35e', // Replace with your Paystack public key
+                email: email,
+                amount: amount,
+                currency: 'NGN',    
+                metadata: {
+                    userId: userId // Send the user ID for identification
+                },
+                callback: function (response) {
+                    // Payment was successful
+                    window.location.href = '/verify-payment?reference=' + response.reference + '&userId=' + userId;
+                },
+                onClose: function () {
+                    alert('Payment cancelled');
+                }
+            });
+
+            handler.openIframe();
+        }
+    </script>
+
+    <!-- Dashboard Body -->
+    <div class="dashboard-body">
+        <div class="box-container">
+            <div>
+                <h2>Welcome, <%= user.username %></h2>
+                <p>Current Balance: ₦<%= user.balance %></p>
+                <a href="/fund-account">Fund Account</a>
+            </div>
+
+            <div class="box">
+                <h3>Total Users</h3>
+                <p>2.5 million</p>
+            </div>
+            <div class="box">
+                <h3>Latest News</h3>
+                <div id="latest-news">
+                    <!-- Add images, videos, and text here -->
+                    <img src="" alt="Latest News" />
+                </div>
+            </div>
+        </div>
+
+        <div class="social-media-container">
+            <h3>Social Media Services</h3>
+
+            <!-- Facebook Engagements -->
+            <div class="social-media-box" onclick="toggleEngagements('facebookEngagements')">
+                <i class="fab fa-facebook"></i> Facebook
+            </div>
+            <div class="engagements" id="facebookEngagements" style="display: none;">
+                <p>Engagements:</p>
+                <div>
+                    <span>Likes:</span>
+                    <input type="number" placeholder="Quantity">
+                    <span>Price: #<span class="price" id="fbLikesPrice">1000</span></span>
+                </div>
+                <div>
+                    <span>Followers:</span>
+                    <input type="number" placeholder="Quantity">
+                    <span>Price: #<span class="price" id="fbFollowersPrice">2000</span></span>
+                </div>
+                <div>
+                    <span>Comments:</span>
+                    <input type="number" placeholder="Quantity">
+                    <span>Price: #<span class="price" id="fbCommentsPrice">1500</span></span>
+                </div>
+                <div>
+                    <span>Shares:</span>
+                    <input type="number" placeholder="Quantity">
+                    <span>Price: #<span class="price" id="fbSharesPrice">1800</span></span>
+                </div>
+            </div>
+            <!-- Repeat the above for other social media platforms... -->
+
+            <!-- Additional social media boxes for Twitter, TikTok, Instagram, and YouTube can go here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i> Tiktok</a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i> Youtube</a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+        <a href="/terms">Terms and Conditions</a>
+        <p>&copy; 2024 Your Company. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleEngagements(id) {
+            const engagements = document.getElementById(id);
+            engagements.style.display = engagements.style.display === "none" ? "block" : "none";
+        }
+    </script>
+
+</body>
+
+</html>

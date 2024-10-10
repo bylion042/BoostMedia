@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Social Media Boosting Site</title>
+    <link rel="stylesheet" href="/styles/styles.css"> <!-- Update this path if needed -->
+</head>
+
+<body>
+    <h1>Register</h1>
+    <div class="container">
+        <form action="/register" method="POST">
+            <!-- Username Field -->
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+        
+            <!-- Email Field -->
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+        
+            <!-- Password Field -->
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+        
+            <!-- Phone Number Field -->
+            <div>
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" name="phoneNumber" id="phoneNumber" required>
+            </div>
+        
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+        </form>
+        
+        <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+</body>
+
+</html>

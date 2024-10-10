@@ -1,0 +1,155 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Background */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #1c1c1c; /* Darker warm black background */
+    color: #e0e0e0; /* Slightly lighter text color for contrast */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+
+.sticky-header .header-content{
+    display: flex;
+    gap: 10rem;
+}
+
+/* Container for forms */
+.container {
+    width: 50%;
+    max-width: 500px;
+    background-color: #282828;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Input fields styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+input {
+    background-color: #3a3a3a;
+    color: #fff;
+}
+
+input:focus {
+    background-color: #484848;
+    outline: none;
+}
+
+/* Buttons */
+button {
+    background-color: #ff6600;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff5500;
+}
+
+/* Reusable link styles */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #ff6600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff5500;
+}
+
+/* Actions Container */
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Dashboard Body */
+.dashboard-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+
+/* Box Container */
+.box-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Each Box */
+.box {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px;
+    color: #f5f5f5;
+    flex: 1;
+    max-width: 30%;
+}
+
+/* Social Media and Engagement Containers */
+.social-media-container,
+.engagements {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 8px;
+    color: #f5f5f5;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.social-media-box,
+.engagements input {
+    background-color: #555;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.social-media-box:hover,
+.engagements input:focus {
+    background-color: #666;
+}
+
+/* Price styling */
+.price {
+    font-weight: bold;
+}

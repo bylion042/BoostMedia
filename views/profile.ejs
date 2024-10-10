@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User_Profile</title>
+    <link rel="stylesheet" href="/styles/styles.css"> <!-- Update this path if needed -->
+</head>
+<body>
+    <div class="profile-page">
+        <form action="/profile/update" method="POST">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="<%= user.username %>">
+            </div>
+        
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<%= user.email %>">
+            </div>
+        
+            <div>
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio"><%= user.bio %></textarea>
+            </div>
+        
+            <button type="submit">Update Profile</button>
+        </form>
+        
+    </div>
+    
+</body>
+</html>
