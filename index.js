@@ -12,8 +12,8 @@ const app = express();
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error(err));
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error(err));
 
 // Middleware
 app.set('view engine', 'ejs');
@@ -25,6 +25,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
+app.get("/", (req, res) => { res.send("Express on Vercel"); });
 app.get('/', (req, res) => {
     res.render('index'); // Render the index.ejs file
 });
